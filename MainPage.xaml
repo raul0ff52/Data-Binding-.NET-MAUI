@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Data_Binding.MainPage">
+
+    <StackLayout Padding="10" Spacing="10">
+
+        <Button Text="Agregar Persona" Clicked="Button_Clicked" />
+
+
+        <Grid BackgroundColor="LightGray" Padding="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Nombre" Grid.Column="0" FontAttributes="Bold" />
+            <Label Text="Apellido" Grid.Column="1" FontAttributes="Bold" />
+            <Label Text="Sexo" Grid.Column="2" FontAttributes="Bold" />
+            <Label Text="Fecha Nacimiento" Grid.Column="3" FontAttributes="Bold" />
+            <Label Text="Rol" Grid.Column="4" FontAttributes="Bold" />
+        </Grid>
+
+
+        <CollectionView ItemsSource="{Binding Personas}" VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding nombre}" Grid.Column="0" />
+                        <Label Text="{Binding apellido}" Grid.Column="1" />
+                        <Label Text="{Binding sexo}" Grid.Column="2" />
+                        <Label Text="{Binding fh_nac, StringFormat='{0:dd/MM/yyyy}'}" Grid.Column="3" />
+                        <Label Text="{Binding id_rol}" Grid.Column="4" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
